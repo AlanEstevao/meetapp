@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Notifications from '~/components/Notifications';
 
-import logo from '~/assets/logo-colorida.svg';
+import logo from '~/assets/logo-colorida.png';
 
 import { Container, Content, Profile } from './styles';
 

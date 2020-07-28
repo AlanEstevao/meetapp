@@ -14,10 +14,21 @@ export const Content = styled.div`
   max-width: 315px;
   text-align: center;
 
+  img {
+    width: 100px;
+  }
+
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    margin-top: 10px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 20px;
 
     input {
       background: rgba(0, 0, 0, 0.1);

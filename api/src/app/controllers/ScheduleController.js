@@ -1,4 +1,4 @@
-import { startOfDay, endOfDay, parseISO } from 'date-fns';
+import { startOfMonth, endOfMonth, parseISO } from 'date-fns';
 import { Op } from 'sequelize';
 
 import Meetup from '../models/Meetup';
@@ -26,10 +26,10 @@ class ScheduleController {
       where: {
         organizer_id: req.userId,
         date: {
-          [Op.between]: [startOfDay(parsedDate), endOfDay(parsedDate)],
+          [Op.between]: [startOfMonth(parsedDate), endOfMonth(parsedDate)],
         },
       },
-      attributes: ['id', 'title', 'date'],
+      attributes: ['id', 'title', 'date', 'localization'],
       include: [
         {
           model: File,
@@ -38,7 +38,7 @@ class ScheduleController {
         },
         {
           model: User,
-          as: 'user',
+          as: 'organizer',
           attributes: ['name'],
         },
       ],
