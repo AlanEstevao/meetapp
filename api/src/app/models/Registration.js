@@ -4,8 +4,9 @@ class Registration extends Model {
   static init(sequelize) {
     super.init(
       {
-        user_id: Sequelize.NUMBER,
-        meetup_id: Sequelize.NUMBER,
+        canceled_at: Sequelize.DATE,
+        // user_id: Sequelize.NUMBER,
+        // meetup_id: Sequelize.NUMBER,
       },
       {
         sequelize,

@@ -1,4 +1,4 @@
-import { isBefore, format } from 'date-fns';
+import { isBefore, format, subDays } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { Op } from 'sequelize';
 
@@ -107,17 +107,13 @@ class RegistrationController {
     const meetups = await Registration.findAll({
       where: {
         user_id: req.userId,
+        canceled_at: null,
       },
-      attributes: ['id'],
+      attributes: ['id', 'canceled_at'],
       include: {
         model: Meetup,
         as: 'meetup',
-        where: {
-          date: {
-            [Op.gte]: today,
-          },
-        },
-        attributes: ['id', 'title', 'date'],
+        attributes: ['id', 'title', 'date', 'past', 'cancelable', 'localization'],
         include: {
           model: File,
           as: 'banner',
@@ -131,13 +127,7 @@ class RegistrationController {
   }
 
   async delete(req, res) {
-    const meetup = await Meetup.findByPk(req.params.id);
-
-    const registration = await Registration.findOne({
-      where: {
-        meetup_id: meetup.id,
-      },
-    });
+    const registration = await Registration.findByPk(req.params.id);
 
     if (registration.user_id !== req.userId) {
       return res.status(401).json({
@@ -145,13 +135,19 @@ class RegistrationController {
       });
     }
 
-    await Registration.destroy({
-      where: { id: registration.id },
-    });
+    const dateWithSub = subDays(registration.date, 5);
 
-    return res.json({
-      message: "OK! You're no longer registrated at this meetup",
-    });
+    if (isBefore(dateWithSub, new Date())) {
+      return res.status(401).json({
+        error: 'You can only cancel registrations 5 days in advance.',
+      })
+    }
+
+    registration.canceled_at = new Date();
+
+    await registration.save();
+
+    return res.json(registration);
   }
 }
 
