@@ -19,6 +19,7 @@ export default function Routes(props){
   <NavigationContainer>
    {props.isSigned ? (
     <Tab.Navigator
+      resetOnBlur={true}
       tabBarOptions={{
         keyboardHidesTabBar: true,
         activeTintColor: '#FFF',

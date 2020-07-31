@@ -51,7 +51,8 @@ export const Title = styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: #333;
-  text-align: center;
+  text-align: left;
+  flex-wrap: wrap;
 `;
 
 export const DateTime = styled.Text`

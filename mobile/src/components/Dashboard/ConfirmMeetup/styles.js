@@ -11,9 +11,9 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Banner = styled.Image`
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+  width: 300px;
+  height: 180px;
+  border-radius: 30px;
 `;
 
 export const Title = styled.Text`
