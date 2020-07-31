@@ -21,12 +21,12 @@ export const Left = styled.View`
 `;
 
 export const Banner = styled.Image`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 70px;
 `;
 
 export const Info = styled.View`
-  margin-left: 10px;
+  margin-left: 15px;
 `;
 
 export const Name = styled.Text`

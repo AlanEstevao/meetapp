@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 import Dashboard from './pages/Dashboard';
+import Registrations from './pages/Registrations';
 import Profile from './pages/Profile';
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,15 @@ export default function Routes(props){
         component={Dashboard}
         options={{
           tabBarLabel: 'Dashboard', 
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="home" size={size} color={color} />
+          ),
+      }} />
+      <Tab.Screen 
+        name="RegistrationsScreen" 
+        component={Registrations}
+        options={{
+          tabBarLabel: 'Inscrições', 
           tabBarIcon: ({ color, size }) => (
             <Icon name="event" size={size} color={color} />
           ),

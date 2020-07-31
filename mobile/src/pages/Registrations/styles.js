@@ -12,7 +12,7 @@ export const Title = styled.Text`
   margin-top: 30px;
 `;
 
-// export const List = styled.FlatList.attrs({
-//   showsVerticalScroolIndicator: false,
-//   contentContainerStyle: { padding: 30 },
-// })``;
+export const List = styled.FlatList.attrs({
+  showsVerticalScroolIndicator: false,
+  contentContainerStyle: { padding: 30 },
+})``;

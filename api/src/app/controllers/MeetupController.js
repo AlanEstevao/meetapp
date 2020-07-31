@@ -12,7 +12,7 @@ class MeetupController {
     const meetups = await Meetup.findAll({
       // where: { organizer_id: req.userId },
       order: ['date'],
-      attributes: ['id', 'title', 'date', 'past', 'cancelable'],
+      attributes: ['id', 'title', 'date', 'localization', 'past', 'cancelable'],
       limit: 20, // itens por página
       offset: (page - 1) * 20, // qtde de itens q vc vai pular
       include: [
